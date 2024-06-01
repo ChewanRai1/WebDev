@@ -1,0 +1,130 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Home || Fashionhive</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" type="image/x-icon" th:href="@{~/img/favicon.ico}">
+
+  <!-- bootstrap v3.3.6 css -->
+  <link rel="stylesheet" th:href="@{~/css/bootstrap.min.css}">
+  <!-- animate css -->
+  <link rel="stylesheet" th:href="@{~/css/animate.css}">
+  <!-- jquery-ui.min css -->
+  <link rel="stylesheet" th:href="@{~/css/jquery-ui.min.css}">
+  <!-- meanmenu css -->
+  <link rel="stylesheet" th:href="@{~/css/meanmenu.min.css}">
+  <!-- owl.carousel css -->
+  <link rel="stylesheet" th:href="@{~/css/owl.carousel.css}">
+  <!-- slick css -->
+  <link rel="stylesheet" th:href="@{~/css/slick.css}">
+  <!-- font-awesome css -->
+  <link rel="stylesheet" th:href="@{~/css/font-awesome.min.css}">
+  <!-- style css -->
+  <link rel="stylesheet" th:href="@{~/css/style.css}">
+  <!-- responsive css -->
+  <link rel="stylesheet" th:href="@{~/css/responsive.css}">
+  <!-- modernizr js -->
+  <script th:src="@{~/js/vendor/modernizr-2.8.3.min.js}"></script>
+
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- header start -->
+<header class="header-pos">
+
+  <div th:replace="~{fragments/header-bottom.html :: header-bottom-area}"></div>
+
+  <div th:replace="~{fragments/mobile-menu.html :: mobile-menu}"></div>
+
+</header>
+<!-- header end -->
+
+<div th:replace="~{fragments/breadcrumb-area.html :: breadcrumb-area}"></div>
+
+<!-- wishlist-area start -->
+<div class="wishlist-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="wishlist-content">
+          <form action="#">
+            <div class="wishlist-table table-responsive">
+              <table>
+                <thead>
+                <tr>
+                  <th class="product-remove"><span class="nobr">Remove</span></th>
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name"><span class="nobr">Product Name</span></th>
+                  <th class="product-price"><span class="nobr"> Unit Price </span></th>
+                  <th class="product-stock-stauts"><span class="nobr"> Stock Status </span></th>
+                  <th class="product-add-to-cart"><span class="nobr">Add to Cart </span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item:${wishlistItems}">
+                  <td class="product-remove"><a th:href="@{~/wishlist/remove/}+${item.id}">×</a></td>
+                  <td class="product-thumbnail"><img th:src="'data:image/png;base64,'+${item.product.product_image}" alt="" /></td>
+                  <td class="product-name"><a th:href="@{~/product/}+${item.id}" th:text="${item.product.product_name}">Clothing 1</a></td>
+                  <td class="product-price"><span class="amount" th:text="'Rs.'+${item.product.product_price}+'/-'"></span></td>
+                  <td class="product-stock-status">
+                    <span class="wishlist-in-stock" th:if="${item.product.getProduct_quantity>0}">In Stock</span>
+                    <span class="wishlist-in-stock" th:if="${item.product.getProduct_quantity==0}">Out of Stock</span>
+                  </td>
+                  <td class="product-add-to-cart">
+                    <a th:href="@{~/cart/add/}+${item.product.id}" th:if="${item.product.getProduct_quantity>0}">Add to Cart</a>
+                    <a th:href="@{~/cart/add/}+${item.product.id}" th:if="${item.product.getProduct_quantity==0}" style="pointer-events: none">Add to Cart</a>
+                  </td>
+                </tr>
+                <tr th:if="${wishlistItems.isEmpty()}">
+                  <td colspan="6">Your wishlist is empty!</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- wishlist-area end -->
+<!-- footer start -->
+  <footer>
+    <div th:replace="~{fragments/footer.html :: footer-top}"></div>
+    <div th:replace="~{fragments/footer.html :: footer-top-area}"></div>
+    <div th:replace="~{fragments/footer.html :: footer-bottom-area}"></div>
+  </footer>
+<!-- footer end -->
+
+<!-- jquery latest version -->
+<script data-cfasync="false" th:src="@{../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js}"></script><script th:src="@{/js/vendor/jquery-1.12.0.min.js}"></script>
+<!-- bootstrap js -->
+<script th:src="@{~/js/bootstrap.min.js}"></script>
+<!-- owl.carousel js -->
+<script th:src="@{~/js/owl.carousel.min.js}"></script>
+<!-- meanmenu js -->
+<script th:src="@{~/js/jquery.meanmenu.js}"></script>
+<!-- jquery-ui js -->
+<script th:src="@{~/js/jquery-ui.min.js}"></script>
+<!-- wow js -->
+<script th:src="@{~/js/wow.min.js}"></script>
+<!-- plugins js -->
+<script th:src="@{~/js/plugins.js}"></script>
+<!-- main js -->
+<script th:src="@{~/js/main.js}"></script>
+
+<script>
+  let breadcrumb=document.getElementsByClassName("breadcrumb-area").item(0);
+  breadcrumb.getElementsByTagName("h1").item(0).innerText="Wishlist";
+  breadcrumb.getElementsByTagName("li").item(1).innerText="Wishlist";
+</script>
+
+</body>
+
+</html>

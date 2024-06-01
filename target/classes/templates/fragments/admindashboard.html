@@ -1,0 +1,30 @@
+
+
+<div th:fragment="sidenav">
+  <div id="left-sidebar" class="sidebar">
+    <div class="navbar-brand">
+      <a th:href="@{~/admin}"><img th:src="@{~/img/logo-white-text.png}" alt="Logo" class="img-fluid logo"></a>
+      <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
+    </div>
+    <div class="sidebar-scroll" style="margin-top: 40%;">
+      <div class="user-account">
+        <div class="dropdown">
+          <span>Welcome,</span>
+          <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Welcome, Admin</strong></a>
+          <ul class="dropdown-menu dropdown-menu-right account">
+            <li><a th:href="@{~/login}"><i class="icon-power"></i>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <nav id="left-sidebar-nav" class="sidebar-nav">
+        <ul id="main-menu" class="metismenu">
+          <li><a th:href="@{~/admin}"><i class="icon-home"></i><span>Dashboard</span></a></li>
+          <li><a th:href="@{~/admin/addproduct}"><i class="icon-pencil"></i><span>Add Product</span></a></li>
+          <li><a th:href="@{~/admin/taskboard}"><i class="icon-list"></i><span>Board</span></a></li>
+          <li><a th:href="@{~/admin/view_order}"><i class="icon-bag"></i><span>Orders</span></a></li>
+          <li><a th:href="@{~/admin/customers}"><i class="icon-user"></i><span>Customers</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+package com.system.Fashionhive.pojo;
+
+import com.system.Fashionhive.entity.Category;
+import com.system.Fashionhive.entity.Product;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductPojo {
+    private Integer id;
+
+    private String product_name;
+
+    private double product_price;
+
+    private double product_quantity;
+
+    private String product_description;
+
+    private String product_size;
+
+    private String product_color;
+
+    private Category product_category;
+
+    private MultipartFile
+            product_image;
+
+    public ProductPojo(Product product){
+        this.id=product.getId();
+        this.product_name=product.getProduct_name();
+        this.product_price=product.getProduct_price();
+        this.product_quantity=product.getProduct_quantity();
+        this.product_description=product.getProduct_description();
+        this.product_size=product.getProduct_size();
+        this.product_color=product.getProduct_color();
+        this.product_category=product.getProduct_category();
+    }
+}

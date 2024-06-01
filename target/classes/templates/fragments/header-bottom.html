@@ -1,0 +1,147 @@
+<div class="header-bottom-area" th:fragment="header-bottom-area">
+  <div class="container">
+    <div class="inner-container">
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-5">
+          <div class="logo">
+            <a th:href="@{~/dashboard}"><img th:src="@{~/img/logo-white-text.png}" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-md-8 hidden-xs hidden-sm">
+          <div class="main-menu">
+            <nav>
+              <ul>
+                <li><a th:href="@{~/dashboard}">home</a>
+
+                </li>
+                <li><a th:href="@{~/about}">about</a></li>
+                <li><a th:href="@{~/blogs}">blog</a></li>
+                <li><a th:href="@{~/shop}">shop</a></li>
+                <li><a th:href="@{~/contact}">contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-8 col-xs-7 header-right">
+          <div class="my-cart">
+            <div class="total-cart">
+              <a th:href="@{/cart}">
+                <i class="fa fa-shopping-cart" style="margin-top: 7px;"></i>
+                <span th:text="${cartItems.size()}"></span>
+              </a>
+            </div>
+            <ul th:if="${!cartItems.isEmpty()}">
+              <li th:each="items:${cartItems}">
+                <div class="cart-img">
+                  <a href="#"><img alt="" th:src="'data:image/png;base64,'+${items.product.product_image}"></a>
+                </div>
+                <div class="cart-info">
+                  <h4><a th:href="@{~/product/}+${items.product.id}" th:text="${items.product.product_name}"></a></h4>
+                  <span th:text="'Rs.'+${items.product.product_price}+' x '+${items.quantity}" th:if="${items.product.product_quantity}>0"></span>
+                  <span th:if="${items.product.product_quantity}==0">Out of Stock</span>
+                </div>
+              </li>
+              <li class="cart-border">
+                <div class="subtotal-text">Subtotal: </div>
+                <div class="subtotal-price" th:text="'Rs.'+${total}+'/-'"></div>
+              </li>
+              <li>
+                <a class="cart-button" th:href="@{/cart}">view cart</a>
+                <a class="checkout" th:href="@{/checkout}">checkout</a>
+              </li>
+            </ul>
+          </div>
+          <div class="user-meta">
+            <a href="#"><i class="fa fa-cog" style="margin-top: 0;"></i></a>
+            <ul>
+              <li><a th:href="@{/profile}">My Account</a></li>
+              <li><a th:href="@{/wishlist}">Wishlist</a></li>
+              <li th:if="${!cartItems.isEmpty()}"><a th:href="@{/checkout}">Checkout</a></li>
+              <li><a th:href="@{~/about}">Testimonial</a></li>
+              <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+          </div>
+          <div class="header-search">
+            <i class="fa fa-search" style="margin-top: 0px;"></i>
+            <div class="header-form">
+              <form action="#">
+                <input type="text" placeholder="Search" />
+                <button><i class="fa fa-search" style="margin-top: 0px;"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header-bottom-area" th:fragment="header-bottom-area-404">
+  <div class="container">
+    <div class="inner-container">
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-5">
+          <div class="logo">
+            <a th:href="@{~/dashboard}"><img th:src="@{~/img/logo-white-text.png}" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-md-8 hidden-xs hidden-sm">
+          <div class="main-menu">
+            <nav>
+              <ul>
+                <li><a th:href="@{~/dashboard}">home</a>
+
+                </li>
+                <li><a th:href="@{~/about}">about</a></li>
+                <li><a th:href="@{~/blogs}">blog</a></li>
+                <li><a th:href="@{~/shop}">shop</a></li>
+                <li><a th:href="@{~/contact}">contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-8 col-xs-7 header-right">
+          <div class="my-cart">
+            <div class="total-cart">
+              <a th:href="@{/cart}">
+                <i class="fa fa-shopping-cart" style="margin-top: 7px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="user-meta">
+            <a href="#"><i class="fa fa-cog" style="margin-top: 0;"></i></a>
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a th:href="@{~/wishlist}">Wishlist</a></li>
+              <li><a th:href="@{~/about}">Testimonial</a></li>
+              <li><a th:href="@{~/logout}">Logout</a></li>
+            </ul>
+          </div>
+          <div class="header-search">
+            <i class="fa fa-search" style="margin-top: 0px;"></i>
+            <div class="header-form">
+              <form action="#">
+                <input type="text" placeholder="Search" />
+                <button><i class="fa fa-search" style="margin-top: 0px;"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header-bottom-area" th:fragment="header-bottom-area-login" style="min-height: 89px">
+    <div class="container">
+        <div class="inner-container">
+            <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-5">
+                    <div class="logo">
+                        <a th:href="@{~/dashboard}"><img th:src="@{~/img/logo-white-text.png}" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
